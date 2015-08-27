@@ -18,7 +18,8 @@ module JwtClaims
       let(:default_claims) do
         {
           aud: [uri, recipient],
-          exp: after_now
+          exp: after_now,
+          nbf: before_now
         }
       end
       context '#rejected' do
@@ -30,14 +31,16 @@ module JwtClaims
           let(:invalid_claims) do
             {
               aud: ['http://www.other.com', 'other recipient'],
-              exp: before_now
+              exp: before_now,
+              nbf: after_now
             }
           end
           it 'returns array of failed claims' do
             expect(Validation.rejected invalid_claims, default_options)
               .to include(
                 :aud,
-                :exp
+                :exp,
+                :nbf
               )
           end
         end

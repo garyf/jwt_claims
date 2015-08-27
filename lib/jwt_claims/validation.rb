@@ -24,6 +24,7 @@ module JwtClaims
       case sym
       when :aud then Claim::Aud
       when :exp then Claim::Exp
+      when :nbf then Claim::Nbf
       else nil # custom claim
       end
     end
