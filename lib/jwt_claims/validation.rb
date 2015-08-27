@@ -22,6 +22,7 @@ module JwtClaims
 
     def registered_claim(sym)
       case sym
+      when :aud then Claim::Aud
       when :exp then Claim::Exp
       else nil # custom claim
       end
