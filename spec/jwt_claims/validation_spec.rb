@@ -19,6 +19,7 @@ module JwtClaims
         {
           aud: [uri, recipient],
           exp: after_now,
+          iat: before_now,
           nbf: before_now
         }
       end
@@ -32,6 +33,7 @@ module JwtClaims
             {
               aud: ['http://www.other.com', 'other recipient'],
               exp: before_now,
+              iat: after_now,
               nbf: after_now
             }
           end
@@ -40,6 +42,7 @@ module JwtClaims
               .to include(
                 :aud,
                 :exp,
+                :iat,
                 :nbf
               )
           end

@@ -8,6 +8,7 @@ module JwtClaims
         it 'w numeric_date now returns false' do
           expect(Nbf.reject? Time.now.to_i).to be false
         end
+
         it 'w numeric_date after now returns true' do
           expect(Nbf.reject? after_now).to be true
         end
