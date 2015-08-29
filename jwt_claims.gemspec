@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   # recommended
   s.license = 'MIT'
   # optional
+  s.add_runtime_dependency('json_web_token', '~> 0.3')
   s.add_development_dependency('rspec', '~> 3.3')
   s.description = 'Modular implementation of JSON Web Token (JWT) Claims'
   s.required_ruby_version = '>= 2.0.0'
