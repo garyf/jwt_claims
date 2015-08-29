@@ -26,7 +26,9 @@ module JwtClaims
       when :exp then Claim::Exp
       when :iat then Claim::Iat
       when :iss then Claim::Iss
+      when :jti then Claim::Jti
       when :nbf then Claim::Nbf
+      when :sub then Claim::Sub
       else nil # custom claim
       end
     end

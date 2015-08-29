@@ -11,11 +11,15 @@ module JwtClaims
       let(:before_now) { Time.now.to_i - 1 }
 
       let(:issuer) { 'issuer' }
+      let(:jwt_id) { 'jwt_id' }
+      let(:subject) { 'subject' }
 
       let(:default_options) do
         {
           aud: uri,
-          iss: issuer
+          iss: issuer,
+          jti: jwt_id,
+          sub: subject
         }
       end
       let(:default_claims) do
@@ -24,7 +28,9 @@ module JwtClaims
           exp: after_now,
           iat: before_now,
           iss: issuer,
-          nbf: before_now
+          jti: jwt_id,
+          nbf: before_now,
+          sub: subject
         }
       end
       context '#rejected' do
@@ -39,7 +45,9 @@ module JwtClaims
               exp: before_now,
               iat: after_now,
               iss: 'other issuer',
-              nbf: after_now
+              jti: 'other jwt_id',
+              nbf: after_now,
+              sub: 'other subject'
             }
           end
           it 'returns array of failed claims' do
@@ -49,7 +57,9 @@ module JwtClaims
                 :exp,
                 :iat,
                 :iss,
-                :nbf
+                :jti,
+                :nbf,
+                :sub
               )
           end
         end
