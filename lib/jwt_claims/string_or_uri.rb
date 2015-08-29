@@ -6,6 +6,17 @@ module JwtClaims
 
     module_function
 
+    # A predicate that compares two strings for equality
+    #
+    # @param a [String]
+    # @param b [String]
+    # @return [true, false]
+    def present_and_equal?(a, b)
+      present?(a) &&
+        present?(b) &&
+        a == b
+    end
+
     # A string is present if it is not blank
     #
     # @param a [String]

@@ -27,13 +27,11 @@ module JwtClaims
           end
         end
 
-        context 'w :aud claim a string' do
+        describe 'w :aud claim a string' do
           let(:recipient) { 'recipient' }
           let(:aud) { recipient }
-          describe 'w match' do
-            it 'string returns false' do
-              expect(Aud.reject? aud, {aud: recipient}).to be false
-            end
+          it 'w match returns false' do
+            expect(Aud.reject? aud, {aud: recipient}).to be false
           end
 
           it 'w/o match returns true' do

@@ -10,9 +10,12 @@ module JwtClaims
       let(:after_now) { Time.now.to_i + 1 }
       let(:before_now) { Time.now.to_i - 1 }
 
+      let(:issuer) { 'issuer' }
+
       let(:default_options) do
         {
-          aud: uri
+          aud: uri,
+          iss: issuer
         }
       end
       let(:default_claims) do
@@ -20,6 +23,7 @@ module JwtClaims
           aud: [uri, recipient],
           exp: after_now,
           iat: before_now,
+          iss: issuer,
           nbf: before_now
         }
       end
@@ -34,6 +38,7 @@ module JwtClaims
               aud: ['http://www.other.com', 'other recipient'],
               exp: before_now,
               iat: after_now,
+              iss: 'other issuer',
               nbf: after_now
             }
           end
@@ -43,6 +48,7 @@ module JwtClaims
                 :aud,
                 :exp,
                 :iat,
+                :iss,
                 :nbf
               )
           end
