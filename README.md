@@ -42,7 +42,7 @@ secure_jwt_example = 'eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqb2UiL
 ### Supported registered claims
 
 JWT claim | key | a valid claim value must
---|--|--
+---|---|---
 Issuer | :iss | equal options[:iss] 
 Subject | :sub |  equal options[:sub]
 Audience | :aud |  include options[:aud]
