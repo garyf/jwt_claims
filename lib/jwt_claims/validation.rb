@@ -7,6 +7,7 @@ module JwtClaims
 
     # @param claims [Hash] JWT claims
     # @param options [Hash] expected values for certain claims
+    #   optional keys include: :aud, :iss, :jti, :sub, :leeway_seconds
     # @return [Array] symbols of the registered claims that fail validation
     def rejected(claims, options = {})
       claims.each_with_object([]) do |claim, memo|

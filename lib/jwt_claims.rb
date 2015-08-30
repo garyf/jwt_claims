@@ -7,7 +7,7 @@ module JwtClaims
 
   # @param jwt [String] JSON web token
   # @param options [Hash] expected values for certain claims;
-  #   optional keys include: :aud, :iss, :jti, :sub
+  #   optional keys include: :aud, :iss, :jti, :sub, :leeway_seconds
   # @return [Hash] { ok: { the jwt claims set hash } }, or { error: [symbols of all rejected claims] }
   def verify(jwt, options)
     hsh = JsonWebToken.verify(jwt, options)

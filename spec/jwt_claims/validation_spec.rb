@@ -19,7 +19,8 @@ module JwtClaims
           aud: uri,
           iss: issuer,
           jti: jwt_id,
-          sub: subject
+          sub: subject,
+          leeway_seconds: 120
         }
       end
       let(:default_claims) do
@@ -42,11 +43,11 @@ module JwtClaims
           let(:invalid_claims) do
             {
               aud: ['http://www.other.com', 'other recipient'],
-              exp: before_now,
+              exp: before_now - 121, # two minute leeway
               iat: after_now,
               iss: 'other issuer',
               jti: 'other jwt_id',
-              nbf: after_now,
+              nbf: after_now + 121,
               sub: 'other subject'
             }
           end
