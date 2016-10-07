@@ -1,3 +1,11 @@
+require 'jwt_claims/claim/aud'
+require 'jwt_claims/claim/exp'
+require 'jwt_claims/claim/iat'
+require 'jwt_claims/claim/iss'
+require 'jwt_claims/claim/jti'
+require 'jwt_claims/claim/nbf'
+require 'jwt_claims/claim/sub'
+
 module JwtClaims
   # Validate registered claims
   # @see http://tools.ietf.org/html/rfc7519#section-4.1

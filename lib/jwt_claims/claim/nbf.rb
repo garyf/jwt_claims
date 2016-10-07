@@ -1,3 +1,5 @@
+require 'jwt_claims/util'
+
 module JwtClaims
   module Claim
     # Not before
