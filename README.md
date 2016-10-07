@@ -31,12 +31,14 @@ Please refer to the [JSON Web Token][json_web_token] gem for additional guidance
 Example
 
 ```ruby
+# An example using the 'Expires' `exp` claim (10 years for this example).
+> jwt = JsonWebToken.sign({foo: 'bar', exp: Time.now.to_i + 315360000}, key: 'gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C')
+#=> "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIiLCJleHAiOjE3OTEyMjc1MTl9.7cT7PzsT8Jv0VQIxokjk3sUqzJCxBR4h3W2uACQ-tW0"
 
-secure_jwt_example = 'eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0dHA6Ly9leGFt.cGxlLmNvbS9pc19yb290Ijp0cnVlfQ.dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk'
-
-# verify with default algorithm, HMAC SHA256
-{:ok, verified_claims} = JwtClaims.verify(secure_jwt_example, key: 'gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C')
-
+# Verify with default algorithm, HMAC SHA256
+# Returns a hash of `{:ok, verified_claims}`
+> JwtClaims.verify(jwt, key: 'gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr9C')
+#=> {:ok=>{:foo=>"bar", :exp=>1475870843}}
 ```
 
 ### Supported registered claims
