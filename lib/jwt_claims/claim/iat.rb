@@ -10,9 +10,10 @@ module JwtClaims
       #   until the specified UTC date/time, and non-integer values may be used
       # @param options [Hash] optional, ignored
       # @return [true, false] whether to reject the claim
-      def reject?(numeric_date, _options = {})
+      def reject?(numeric_date, options = {})
         return true unless numeric_date.is_a?(Numeric)
-        numeric_date >= Time.now.to_i
+        seconds = Util.leeway_seconds(options.fetch(:leeway_seconds, 0))
+        numeric_date - seconds >= Time.now.to_i
       end
     end
   end
